@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.return-top{
+			opacity: 1;
+			position: fixed;
+			bottom: 110px;
+			left:50%;
+			margin-left: 530px;
+			z-index: 10;
+			display: none;
+		}
+		.return-top .btn-return-top{
+			background-color: #ddd;
+			display: block;
+			width:38px;
+			height:38px;
+			border-radius: 5px;
+			border:0px;
+			cursor: pointer;
+			position: relative;
+		}
+		.return-top .btn-return-top:hover{
+			background-color: #ccc;
+		}
+		.return-top .btn-return-top .arrow{
+			width:0px;
+			height: 0px;
+			border:9px solid transparent;
+			border-bottom-color: #aaa;
+			margin:9px;
+		}
+		.return-top .btn-return-top .stick{
+			width:8px;
+			height: 14px;
+			top:15px;
+			margin:0 14px;
+			background-color: #aaa;
+			position: absolute;
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div style="height:1000px;background:red"></div>
+	<div style="height:1000px;background:blue"></div>
+	<div style="height:1000px;background:yellow"></div>
+	<div class="return-top">
+		<a data-action:"return-top" data-tip="回到顶部" href="" class="btn-return-top"> 
+			<div class="arrow"></div>
+			<div class="stick"></div>
+		</a>
+	</div>
+	<script src="../jquery-1.8.3.min.js"></script> 
+	<script type="text/javascript">
+		$(function(){
+			//给window添加绑定scroll事件
+			$(window).bind("scroll",function() {
+				//获取当前垂直位移值
+				var scrollTopNum=$(document).scrollTop(),
+				//获取浏览器当前高度
+				winHeight=$(window).height(),
+				returnTop=$("div.return-top");
+				//滚动条垂直距离大于0时显示，反之隐藏
+				(scrollTopNum>500)?returnTop.fadeIn("fast"):returnTop.fadeOut('fast');
+			});
+
+ 		    // 点击按钮后，滚动条的垂直方向的值逐渐变为0，也就是滑动向上的效果
+ 		    $("div.return-top").click(function() {
+ 		    	$("html, body").animate({ scrollTop: 0 }, 800);return false;
+ 		    });
+
+ 		});
+ 	</script>
+ </body>
+ </html>

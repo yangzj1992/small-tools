@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #ccc;
+		}
+		.page{
+			position: relative;
+			width: 400px;
+			height: 250px;
+			paddingi: 10px;
+			background: #fff;
+			overflow: hidden;
+			cursor: pointer;
+		}
+		.page img{
+			width: 100%;
+			height: 100%;
+		}
+		.page .angle{
+			position: absolute;
+			top:0;
+			right: 0;
+			border: 0 solid #fff;
+			border-left:0 solid #ccc;
+			border-bottom:0 solid #ccc;
+			transition:border-left-width 0.8s,border-top-width 0.8s;
+		}
+		.page:hover .angle{
+			border-left-width:40px;
+			border-top-width:40px;
+		}
+		.page.tag .angle{
+			border-left-width:840px;
+			border-top-width:540px;
+		}
+	</style>
+</head>
+<body>
+	<div class="page" id="tag">
+		<div class="angle"></div>
+		<img src="http://www.33lc.com/article/UploadPic/2012-10/2012102416202559471.jpg" alt="">
+	</div>
+	<script>
+		var tagEl=document.getElementById("tag");
+		tagEl.onclick=function(){
+			this.className="page tag";
+		}
+	</script>
+</body>
+</html>

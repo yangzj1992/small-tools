@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>	
+
+	<style type="text/css">
+		.button {
+			height: 2em;
+			border: 0;
+			border-radius: .2em;
+			background-color: #34538b;
+			color: #fff;
+			font-size: 12px;
+			font-weight: bold;
+		}
+	</style>
+	
+</head>
+<body>
+	<input type="button" id="button" class="button" value="点击我，显示我" />
+	<p id="detail"></p>
+</body>
+<script type="text/javascript">
+		var oButton = document.getElementById("button"),
+		oDetail = document.getElementById("detail");
+
+		if (oButton && oDetail) {
+			oButton.onclick = function() {
+				var oStyle = this.currentStyle? this.currentStyle : window.getComputedStyle(this, false);
+
+				var key, html = '本按钮CSS属性名和属性值依次为('+ !!this.currentStyle +')：';
+				if (typeof oStyle === "object") {
+					for (key in oStyle) {
+						if (/^[a-z]/i.test(key) && oStyle[key]) {
+							html = html + '' + key + ":" + oStyle[key] + '';
+						}
+					}
+				} else {
+					html += '无法获取CSS样式！';
+				}
+
+				oDetail.innerHTML = html;
+			};
+		}
+	</script>
+</html>
