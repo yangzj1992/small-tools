@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+<meta charset="utf-8">
+<p id="demo">点击这个按钮，获得您的坐标：</p>
+<button onclick="getLocation()">试一下</button>
+<script>
+var x=document.getElementById("demo");
+function getLocation()
+  {
+  if (navigator.geolocation)
+    {
+    navigator.geolocation.watchPosition(showPosition,showError);
+    }
+  else{x.innerHTML="Geolocation is not supported by this browser.";}
+  }
+function showPosition(position)
+  {
+  x.innerHTML="纬度: " + position.coords.latitude + 
+  "<br />经度: " + position.coords.longitude;  
+  }
+function showError(error){
+  switch(error.code){
+    case error.PERMISSION_DENIED:
+      alert("用户拒绝获取地理数据");
+      break;
+    case error.POSITION_UNAVAILABLE:
+      alert("地理数据无法获取");
+      break;
+    case error.TIMEOUT:
+      alert("超时，地理数据无法获取");
+      break;
+    case error.UNKNOWN_ERROR:
+      alert("未知原因导致地理数据无法获取");
+      break;
+    }
+  }
+</script>
+</body>
+</html>
