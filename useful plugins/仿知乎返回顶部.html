@@ -57,21 +57,16 @@
 	<script src="../jquery-1.8.3.min.js"></script> 
 	<script type="text/javascript">
 		$(function(){
-			//给window添加绑定scroll事件
 			$(window).bind("scroll",function() {
-				//获取当前垂直位移值
-				var scrollTopNum=$(document).scrollTop(),
-				//获取浏览器当前高度
-				winHeight=$(window).height(),
-				returnTop=$("div.return-top");
-				//滚动条垂直距离大于0时显示，反之隐藏
+				var scrollTopNum = $(document).scrollTop(),
+				winHeight = $(window).height(),
+				returnTop = $("div.return-top");
 				(scrollTopNum>500)?returnTop.fadeIn("fast"):returnTop.fadeOut('fast');
 			});
 
- 		    // 点击按钮后，滚动条的垂直方向的值逐渐变为0，也就是滑动向上的效果
- 		    $("div.return-top").click(function() {
- 		    	$("html, body").animate({ scrollTop: 0 }, 800);return false;
- 		    });
+ 		  $("div.return-top").click(function() {
+ 		  	$("html, body").animate({ scrollTop: 0 }, 800);return false;
+ 		  });
 
  		});
  	</script>
